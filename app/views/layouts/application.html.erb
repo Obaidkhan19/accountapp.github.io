@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookkeeper</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="parameters" content="<%= { route: "#{params[:controller]}/#{params[:action]}", payload: (@payload || {}) }.to_json %>" />
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <%= render partial: "shared/nav" %>
+      <div id="content">
+        <div class="container-fluid">
+          <button id="btn-toggle-nav" class="btn btn-info">
+            Toggle
+          </button>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

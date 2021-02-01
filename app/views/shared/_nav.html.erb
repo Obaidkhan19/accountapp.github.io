@@ -1,0 +1,39 @@
+<nav id="sidebar" class="">
+  <div class="sidebar-header">
+    <h3>
+      Book Keeper
+    </h3>
+  </div>
+
+  <ul class="list-unstyled components">
+    <li>
+      <a href="#nav-operations" data-toggle="collapse" class="dropdown-toggle" aria-expanded="false">
+        Operations
+      </a>
+      <ul class="collapse list-unstyled" id="nav-operations">
+        <li>
+          <%= link_to accounting_codes_path do %>
+            Accounting Codes
+          <% end %>
+        </li>
+        <li>
+          <%= link_to accounting_entries_path do %>
+            Accounting Entries
+          <% end %>
+        </li>
+      </ul>
+    </li>
+    <li>
+      <a href="#nav-reports" data-toggle="collapse" class="dropdown-toggle" aria-expanded="false">
+        Reports
+      </a>
+      <ul class="collapse list-unstyled" id="nav-reports">
+        <li>
+          <%= link_to reports_trial_balance_path do %>
+            Trial Balance
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

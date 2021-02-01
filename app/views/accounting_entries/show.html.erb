@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <h1>
+        Accounting Entry: <%= @accounting_entry.id %>
+        <br>
+        <small class="text-muted">
+          Date Prepared: <%= @accounting_entry.date_prepared.strftime("%B %d, %Y") %>
+          Status: <%= @accounting_entry.status %>
+        </small>
+      </h1>
+      <% if @accounting_entry.pending? %>
+        <button class="btn btn-success" id="btn-approve">
+          APPROVE
+        </button>
+        <button class="btn btn-danger" id="btn-delete">
+          DELETE
+        </button>
+        <button class="btn btn-info" id="btn-edit-date-prepared">
+          Edit Date Prepared
+        </button>
+      <% end %>
+      <hr>
+      <h6>
+        Particular
+      </h6>
+      <p>
+        <%= @accounting_entry.particular %>
+      </p>
+      <% if @accounting_entry.pending? %>
+        <button id="btn-edit-particular">
+          Edit
+        </button>
+      <% end %>
+      <hr>
+
+      <% if @accounting_entry.pending? %>
+        <%= render partial: "accounting_entries/actions_new_journal_entry" %>
+      <% end %>
+      
+      <% if @accounting_entry.journal_entries.size > 0 %>
+        <%= render partial: "accounting_entries/journal_entries", locals: { journal_entries: @accounting_entry.journal_entries, accounting_entry: @accounting_entry } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render partial: "accounting_entries/modals/approve" %>
+<%= render partial: "accounting_entries/modals/delete" %>
+<%= render partial: "accounting_entries/modals/delete_journal_entry" %>
+<%= render partial: "accounting_entries/modals/edit_particular" %>
+<%= render partial: "accounting_entries/modals/edit_date_prepared" %>
